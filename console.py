@@ -125,7 +125,6 @@ class HBNBCommand(cmd.Cmd):
             return
         new_instance = HBNBCommand.classes[class_name]()
         print(new_instance.id)
-        print('-'*10)
         for element in param:
             kv = element.split('=')
             key, val = kv
