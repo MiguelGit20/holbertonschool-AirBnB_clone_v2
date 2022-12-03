@@ -126,7 +126,6 @@ class HBNBCommand(cmd.Cmd):
             return
 
         new_instance = HBNBCommand.classes[class_name]()
-        storage.save()
         print(new_instance.id)
 
         for element in param:
@@ -134,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
             key, val = kv
             val = val.replace('_', ' ')
             setattr(new_instance, key, eval(val))
-        storage.save()
+        new_instance.save()
 
     def help_create(self):
         """ Help information for the create method """
