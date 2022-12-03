@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Verifies the environment variable.
-"""
+"""Verifies the environment variable."""
 from os import getenv
 
 if getenv('HBNB_TYPE_STORAGE') == 'db':
