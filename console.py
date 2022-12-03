@@ -133,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
             key, val = kv
             val = val.replace('_', ' ')
             setattr(new_instance, key, eval(val))
-        new_instance.save()
+            new_instance.save()
 
     def help_create(self):
         """ Help information for the create method """
