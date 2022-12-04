@@ -28,6 +28,7 @@ class BaseModel:
                                                      '%Y-%m-%dT%H:%M:%S.%f')
             if kwargs.get('__class__'):
                 del kwargs['__class__']
+
             self.__dict__.update(kwargs)
 
     def __str__(self):
@@ -50,6 +51,7 @@ class BaseModel:
                           (str(type(self)).split('.')[-1]).split('\'')[0]})
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
+
         if '_sa_instance_state' in dictionary:
             del dictionary['_sa_instance_state']
         return dictionary

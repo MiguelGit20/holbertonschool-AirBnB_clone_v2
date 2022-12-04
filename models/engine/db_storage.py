@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-DBStorage class
+This module defines a class to manage database storage for hbnb clone.
 """
 from sqlalchemy import create_engine
 from os import getenv
