@@ -27,5 +27,5 @@ class State(BaseModel, Base):
             for k, v in Objs.items():
                 if k == 'state_id':
                     if v == self.id:
-                        lst.append(v)
+                        lst = lst.append(v)
             return lst       
