@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 """
 Script that starts a Flask web application.
-Routes:
-    /
-    /hbnb
-    /c/<text>
 """
 
 from flask import Flask
@@ -29,7 +25,7 @@ def hbnb_route():
 def c_route(text):
     """Display 'C ' followed by the value of the text variable."""
     new_text = text.replace('_', ' ')
-    return f'C {escape(new_text)}'
+    return 'C {}'.format(escape(new_text))
 
 
 if __name__ == '__main__':
