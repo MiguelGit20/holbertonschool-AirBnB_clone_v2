@@ -4,7 +4,7 @@ This module defines a class to manage database storage for hbnb clone.
 """
 from sqlalchemy import create_engine
 from os import getenv
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 from models.city import City
 from models.place import Place
 from models.amenity import Amenity
@@ -23,12 +23,13 @@ class DBStorage:
     def __init__(self):
         """Constructor"""
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
-            getenv('HBNB_MYSQL_USER'),
-            getenv('HBNB_MYSQL_PWD'),
-            getenv('HBNB_MYSQL_HOST'),
-            getenv('HBNB_MYSQL_DB')), pool_pre_ping=True)
+            getenv("HBNB_MYSQL_USER"),
+            getenv("HBNB_MYSQL_PWD"),
+            getenv("HBNB_MYSQL_HOST"),
+            getenv("HBNB_MYSQL_DB")), 
+            pool_pre_ping=True)
 
-        if getenv('HBNB_ENV') == 'test':
+        if getenv("HBNB_ENV") == 'test':
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
