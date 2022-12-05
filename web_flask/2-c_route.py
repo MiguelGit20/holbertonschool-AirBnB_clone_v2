@@ -7,6 +7,7 @@ implementing several routes.
 from flask import Flask
 from markupsafe import escape
 
+"""Instance"""
 app = Flask(__name__)
 
 
