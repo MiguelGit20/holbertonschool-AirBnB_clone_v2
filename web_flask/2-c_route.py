@@ -5,27 +5,28 @@ implementing several routes.
 """
 
 from flask import Flask
+from markupsafe import escape
 
 app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
-def hello_hbnb():
+def hello_route():
     """Display “Hello HBNB!”."""
     return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
-def hbnb():
+def hbnb_route():
     """Display “HBNB”."""
     return "HBNB"
 
 
 @app.route("/c/<text>", strict_slashes=False)
-def c_text(text=None):
+def c_route(text=None):
     """Display “C ” followed by the value of the text variable."""
     new_text = text.replace('_', ' ')
-    return f'C {new_text}'
+    return f'C {escape(new_text)}'
 
 
 if __name__ == '__main__':
