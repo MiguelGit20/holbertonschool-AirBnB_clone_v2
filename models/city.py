@@ -8,6 +8,5 @@ class City(BaseModel, Base):
     """ The city class, creating table """
 
     __tablename__ = 'cities'
-
     name = Column(String(128), nullable=False)
     state_id = Column(String(60), ForeignKey('states.id'), nullable=False)

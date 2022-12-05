@@ -14,20 +14,18 @@ class State(BaseModel, Base):
 
     name = Column(String(128), nullable=False)
 
-    if getenv('HBNB_TYPE_STORAGE') != 'db':
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
+        cities = relationship('City', backref='state', cascade='delete')
+
+    else:
         @property
         def cities(self):
             from models import storage
-            """
-            Returns the list of City instances
-            with state_id equals to the current State.id
-            """
+            """Returns the list of City instances"""
             lst = []
             Objs = storage.all(City)
             for k, v in Objs.items():
                 if k == 'state_id':
                     if v == self.id:
                         lst.append(v)
-            return lst
-    else:
-        cities = relationship('City', backref='state', cascade='delete')
+            return lst       
