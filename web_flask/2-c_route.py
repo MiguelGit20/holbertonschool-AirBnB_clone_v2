@@ -1,31 +1,33 @@
 #!/usr/bin/python3
 """
-Script that starts a Flask web application,
-implementing several routes.
+Script that starts a Flask web application.
+Routes:
+    /
+    /hbnb
+    /c/<text>
 """
 
 from flask import Flask
 from markupsafe import escape
 
-"""Instance"""
 app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
 def hello_route():
-    """Display “Hello HBNB!”."""
+    """Display 'Hello HBNB!'."""
     return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
 def hbnb_route():
-    """Display “HBNB”."""
+    """Display 'HBNB'."""
     return "HBNB"
 
 
 @app.route("/c/<text>", strict_slashes=False)
 def c_route(text=None):
-    """Display “C ” followed by the value of the text variable."""
+    """Display 'C ' followed by the value of the text variable."""
     new_text = text.replace('_', ' ')
     return f'C {escape(new_text)}'
 
