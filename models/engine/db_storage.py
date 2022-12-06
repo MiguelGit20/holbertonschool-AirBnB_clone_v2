@@ -26,7 +26,7 @@ class DBStorage:
             getenv("HBNB_MYSQL_USER"),
             getenv("HBNB_MYSQL_PWD"),
             getenv("HBNB_MYSQL_HOST"),
-            getenv("HBNB_MYSQL_DB")), 
+            getenv("HBNB_MYSQL_DB")),
             pool_pre_ping=True)
 
         if getenv("HBNB_ENV") == 'test':
@@ -67,6 +67,11 @@ class DBStorage:
     def reload(self):
         """Creating tables and the session"""
         Base.metadata.create_all(self.__engine)
-        ssn = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        session = scoped_session(ssn)
-        self.__session = session()
+        sessionn_factory = sessionmaker(
+            bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sessionn_factory)
+        self.__session = Session()
+
+    def close(self):
+        """Closing session"""
+        self.__session.remove()
