@@ -63,7 +63,7 @@ class FileStorage:
         for key, val in cpy_dict.items():
             if val == obj:
                 del FileStorage.__objects[key]
-    
+
     def close(self):
         """Deserializing the JSON file to objects"""
         self.reload()
