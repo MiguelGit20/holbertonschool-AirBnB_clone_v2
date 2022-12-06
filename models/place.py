@@ -31,5 +31,5 @@ class Place(BaseModel, Base):
             lst = []
             for rev in list(storage.all(Review).values()):
                 if rev.place_id == self.id:
-                    lst = lst.append(rev)
+                    lst.append(rev)
             return lst
