@@ -6,8 +6,8 @@
 <body>
     <h1>States</h1>
     <ul>
-        {% for key, val in obj.items() %}
-        <li>{{ key }}: <b>{{ obj[name] }}</b></li>
+        {% for inst in obj %}
+        <li>{{ inst.id }}: <B>{{ inst.name }}</B></li>
         {% endfor %}
     </ul>
 </body>
