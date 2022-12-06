@@ -28,8 +28,5 @@ class Place(BaseModel, Base):
         @property
         def reviews(self):
             from models import storage
-            lst = []
-            for rev in list(storage.all(Review).values()):
-                if rev.place_id == self.id:
-                    lst.append(rev)
-            return lst
+            return [rev for rev in list(storage.all(Review).values())
+                    if rev.place_id == self.id]
