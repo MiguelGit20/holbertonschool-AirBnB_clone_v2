@@ -9,10 +9,13 @@
     <H1>States</H1>
     <UL>
         {% for states in states_obj | sort(attribute='name') %}
-        <LI>{{ states.id }}: <B>{{ states.name }}</B>
+        <LI>
+            {{ states.id }}: <B>{{ states.name }}</B>
             <UL>
                 {% for cities in cities_obj | sort(attribute='name') %}
+                {% if cities.state_id == states.id %}
                 <LI>{{ cities.id }}: <B>{{ cities.name }}</B></LI>
+                {% endif %}
                 {% endfor %}
             </UL>
         </LI>
