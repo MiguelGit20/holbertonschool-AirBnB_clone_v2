@@ -20,7 +20,9 @@ def cities_by_state():
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         cities_obj = [c for c in list(storage.all(City).values())]
         states_obj = [s for s in storage.all(State).values()]
-        return render_template("8-cities_by_states.html", states_obj=states_obj, cities_obj=cities_obj)
+        return render_template(
+            "8-cities_by_states.html",
+            states_obj=states_obj, cities_obj=cities_obj)
 
 
 @app.teardown_appcontext
